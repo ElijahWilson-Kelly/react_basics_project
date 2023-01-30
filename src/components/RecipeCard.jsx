@@ -40,7 +40,7 @@ export const RecipeCard = ({ recipe, useRecipe }) => {
       <Flex
         direction="column"
         align={"center"}
-        mt={2}
+        mt={4}
         textAlign="center"
         gap={3}
         color={"gray.700"}

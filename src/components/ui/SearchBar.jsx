@@ -17,6 +17,7 @@ export const SearchBar = ({ searchTerm, useSearchTerm, ...props }) => {
         onChange={handleChange}
         value={searchTerm}
         fontWeight={"inherit"}
+        bg={"#00000099"}
       ></Input>
     </InputGroup>
   );

@@ -28,7 +28,7 @@ export const RecipesPage = ({ data, useRecipe }) => {
         fontWeight={"bold"}
         color={"gray.200"}
       />
-      <Flex wrap={"wrap"} gap={10} justify="center">
+      <Flex wrap={"wrap"} gap={8} justify="center">
         {recipes.map((recipe) => (
           <RecipeCard
             recipe={recipe.recipe}

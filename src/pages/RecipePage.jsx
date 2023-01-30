@@ -11,10 +11,7 @@ export const RecipePage = ({ recipe, useRecipe }) => {
         aria-label="Search database"
         p={10}
         bg={"none"}
-        onClick={() => {
-          console.log("hey");
-          useRecipe(null);
-        }}
+        onClick={() => useRecipe(null)}
       />
       <Image
         src={recipe.image}
