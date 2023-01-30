@@ -1,24 +1,36 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Grid, Heading } from "@chakra-ui/react";
 import { SearchBar } from "../components/ui/SearchBar";
 import { useState } from "react";
 import { RecipeCard } from "../components/RecipeCard";
+import { Header } from "../components/Header";
 
-export const RecipesPage = ({ data, useRecipe }) => {
+export const RecipesPage = ({ recipes, useRecipe, favouriteRecipes }) => {
   const [searchTerm, useSearchTerm] = useState("");
-  const recipes = data.filter((item) =>
+  const [filterTerm, useFilterTerm] = useState("All");
+
+  if (filterTerm === "Favourites") {
+    recipes = favouriteRecipes;
+  } else if (filterTerm != "All") {
+    recipes = recipes.filter((item) => {
+      return item.recipe.healthLabels.includes(filterTerm);
+    });
+  }
+  recipes = recipes.filter((item) =>
     item.recipe.label.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <Flex direction={"column"} align={"center"} p={10}>
+      <Header useFilterTerm={useFilterTerm} filterTerm={filterTerm} />
       <Heading
         color="cyan.50"
-        fontSize={["5xl", null, "6xl", "7xl"]}
+        fontSize={["5xl", "6xl", "7xl", "8xl"]}
         letterSpacing={1.5}
         fontWeight={"hairline"}
         borderBottom={"1px solid white"}
+        mt={10}
       >
-        Winc Kitchen
+        MENU
       </Heading>
       <SearchBar
         searchTerm={searchTerm}
@@ -28,7 +40,18 @@ export const RecipesPage = ({ data, useRecipe }) => {
         fontWeight={"bold"}
         color={"gray.200"}
       />
-      <Flex wrap={"wrap"} gap={8} justify="center">
+      <Grid
+        templateColumns={[
+          "repeat(1, 1fr)",
+          null,
+          "repeat(2, 1fr)",
+          null,
+          "repeat(3, 1fr)",
+          "repeat(4, 1fr)",
+        ]}
+        gap={20}
+        justify="center"
+      >
         {recipes.map((recipe) => (
           <RecipeCard
             recipe={recipe.recipe}
@@ -36,7 +59,7 @@ export const RecipesPage = ({ data, useRecipe }) => {
             useRecipe={useRecipe}
           />
         ))}
-      </Flex>
+      </Grid>
     </Flex>
   );
 };

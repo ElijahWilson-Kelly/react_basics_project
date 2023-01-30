@@ -1,18 +1,31 @@
-import { Box, Grid, IconButton, Image } from "@chakra-ui/react";
+import { Box, Flex, Grid, IconButton, Image } from "@chakra-ui/react";
 import { RecipeInformation } from "../components/RecipeInfomation";
 import { RecipeLabels } from "../components/RecipeLabels";
-import { ChevronLeftIcon } from "@chakra-ui/icons";
+import { ChevronLeftIcon, StarIcon } from "@chakra-ui/icons";
 
-export const RecipePage = ({ recipe, useRecipe }) => {
+export const RecipePage = ({ recipe, useRecipe, toggleRecipeFavourite }) => {
   return (
     <Box bg={"white"} w={["100%", null, "70%"]} mx={"auto"} maxW={800}>
-      <IconButton
-        icon={<ChevronLeftIcon fontSize={20} />}
-        aria-label="Search database"
-        p={10}
-        bg={"none"}
-        onClick={() => useRecipe(null)}
-      />
+      <Flex justify={"space-between"}>
+        <IconButton
+          icon={<ChevronLeftIcon fontSize={20} />}
+          aria-label="Search database"
+          p={10}
+          bg={"none"}
+          onClick={() => useRecipe(null)}
+        />
+        <IconButton
+          icon={
+            <StarIcon fontSize={25} color={recipe.favorited ? "red" : "gray"} />
+          }
+          _hover={{ opacity: "0.7" }}
+          aria-label="Search database"
+          p={10}
+          bg={"none"}
+          onClick={() => toggleRecipeFavourite(recipe)}
+        />
+      </Flex>
+
       <Image
         src={recipe.image}
         w={"100%"}

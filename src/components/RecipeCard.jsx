@@ -12,7 +12,7 @@ export const RecipeCard = ({ recipe, useRecipe }) => {
 
   return (
     <Box
-      w={300}
+      w={320}
       borderRadius="lg"
       borderWidth="1px"
       bg="white"
@@ -23,7 +23,6 @@ export const RecipeCard = ({ recipe, useRecipe }) => {
       transition={"transform 200ms ease, opacity 200ms ease"}
       _hover={{
         cursor: "pointer",
-        transform: "scale(1.05) rotate(-2deg) translateY(-10px)",
         opacity: "0.7",
       }}
       onClick={() => {
@@ -52,7 +51,7 @@ export const RecipeCard = ({ recipe, useRecipe }) => {
         <Text color="gray.900" fontSize={"xl"} fontWeight="extrabold">
           {recipe.label}
         </Text>
-        <Labels labels={healthLabels} bg="green.100" />
+        <Labels labels={healthLabels} bg="purple.100" />
         <Labels labels={dietLabels} bg="blue.100" />
         <Text>
           Dish: <b>{dishType}</b>
