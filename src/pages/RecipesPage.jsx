@@ -1,7 +1,7 @@
 import { Flex, Heading } from "@chakra-ui/react";
 import { SearchBar } from "../components/ui/SearchBar";
 import { useState } from "react";
-import { Recipe } from "../components/Recipe";
+import { RecipeCard } from "../components/RecipeCard";
 
 export const RecipesPage = ({ data, useRecipe }) => {
   const [searchTerm, useSearchTerm] = useState("");
@@ -13,7 +13,7 @@ export const RecipesPage = ({ data, useRecipe }) => {
     <Flex direction={"column"} align={"center"} p={10}>
       <Heading
         color="cyan.50"
-        fontSize={"5xl"}
+        fontSize={["5xl", null, "6xl", "7xl"]}
         letterSpacing={1.5}
         fontWeight={"hairline"}
         borderBottom={"1px solid white"}
@@ -30,7 +30,7 @@ export const RecipesPage = ({ data, useRecipe }) => {
       />
       <Flex wrap={"wrap"} gap={10} justify="center">
         {recipes.map((recipe) => (
-          <Recipe
+          <RecipeCard
             recipe={recipe.recipe}
             key={recipe.recipe.label}
             useRecipe={useRecipe}

@@ -1,4 +1,5 @@
-import { Input } from "@chakra-ui/react";
+import { Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
+import { Search2Icon } from "@chakra-ui/icons";
 
 export const SearchBar = ({ searchTerm, useSearchTerm, ...props }) => {
   const handleChange = (e) => {
@@ -6,12 +7,17 @@ export const SearchBar = ({ searchTerm, useSearchTerm, ...props }) => {
   };
 
   return (
-    <Input
-      placeholder="Search:"
-      color={"white"}
-      onChange={handleChange}
-      value={searchTerm}
-      {...props}
-    ></Input>
+    <InputGroup {...props}>
+      <InputLeftAddon bg={"white"}>
+        <Search2Icon color={"blue.600"} />
+      </InputLeftAddon>
+      <Input
+        placeholder="Search:"
+        color={"white"}
+        onChange={handleChange}
+        value={searchTerm}
+        fontWeight={"inherit"}
+      ></Input>
+    </InputGroup>
   );
 };

@@ -1,7 +1,7 @@
 import { Box, Image, Flex, Text } from "@chakra-ui/react";
-import { Labels } from "./ui/Labels";
+import { Labels } from "./Labels";
 
-export const Recipe = ({ recipe, useRecipe }) => {
+export const RecipeCard = ({ recipe, useRecipe }) => {
   const healthLabels = recipe.healthLabels.filter(
     (label) => label === "Vegetarian" || label === "Vegan"
   );
@@ -12,17 +12,18 @@ export const Recipe = ({ recipe, useRecipe }) => {
 
   return (
     <Box
-      w={260}
+      w={300}
       borderRadius="lg"
       borderWidth="1px"
       bg="white"
       boxShadow={"2xl"}
       overflow="hidden"
       mt={10}
+      p={5}
       transition={"transform 200ms ease, opacity 200ms ease"}
       _hover={{
         cursor: "pointer",
-        transform: "scale(1.1) rotate(-2deg) translateY(-20px)",
+        transform: "scale(1.05) rotate(-2deg) translateY(-10px)",
         opacity: "0.7",
       }}
       onClick={() => {
@@ -39,13 +40,15 @@ export const Recipe = ({ recipe, useRecipe }) => {
       <Flex
         direction="column"
         align={"center"}
-        marginY={2}
+        mt={2}
         textAlign="center"
-        gap={2}
+        gap={3}
         color={"gray.700"}
         fontSize={"xs"}
       >
-        <Text color="gray.500">{recipe.mealType[0]}</Text>
+        <Text color="gray.400" fontWeight={"bold"}>
+          {recipe.mealType[0].toUpperCase()}
+        </Text>
         <Text color="gray.900" fontSize={"xl"} fontWeight="extrabold">
           {recipe.label}
         </Text>
@@ -54,7 +57,7 @@ export const Recipe = ({ recipe, useRecipe }) => {
         <Text>
           Dish: <b>{dishType}</b>
         </Text>
-        <Text>Cautions:</Text>
+        {cautionLabels.length > 0 && <Text>Cautions:</Text>}
         <Labels labels={cautionLabels} bg="red.100" />
       </Flex>
     </Box>
