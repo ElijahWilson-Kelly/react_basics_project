@@ -16,10 +16,10 @@ export const RecipeInformation = ({ recipe }) => {
       <Text>
         <b>Ingredients:</b>
       </Text>
-      {recipe.ingredients.map((ingredient, index) => {
+      {recipe.ingredientLines.map((line, index) => {
         return (
-          <Text key={index} mb={2} color={"gray.500"}>
-            {ingredient.text}
+          <Text key={line} mb={2} color={"gray.500"}>
+            {line}
           </Text>
         );
       })}

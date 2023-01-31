@@ -11,6 +11,15 @@ export const App = () => {
   const [filterTerm, useFilterTerm] = useState("All");
   const toast = useToast();
 
+  let recipes = data.hits;
+  if (filterTerm === "Favourites") {
+    recipes = favouriteRecipes;
+  } else if (filterTerm != "All") {
+    recipes = recipes.filter((recipe) => {
+      return recipe.recipe.healthLabels.includes(filterTerm);
+    });
+  }
+
   const toggleRecipeFavourite = (recipeToToggle) => {
     const index = favouriteRecipes.findIndex(
       (recipe) => recipe.recipe.label === recipeToToggle.label
@@ -55,7 +64,7 @@ export const App = () => {
         />
       ) : (
         <RecipesPage
-          recipes={data.hits}
+          recipes={recipes}
           useRecipe={useRecipe}
           favouriteRecipes={favouriteRecipes}
           filterTerm={filterTerm}

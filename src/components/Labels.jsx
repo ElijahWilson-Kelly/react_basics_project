@@ -1,5 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react";
 
+// Renders a Flexbox of labels with given properties for each label
 export const Labels = ({ labels, ...props }) => {
   return (
     <Flex gap={2} wrap={"wrap"}>

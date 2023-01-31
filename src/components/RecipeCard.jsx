@@ -20,14 +20,12 @@ export const RecipeCard = ({ recipe, useRecipe }) => {
       overflow="hidden"
       mt={10}
       p={5}
-      transition={"transform 200ms ease, opacity 200ms ease"}
+      transition={"opacity 200ms ease"}
       _hover={{
         cursor: "pointer",
         opacity: "0.7",
       }}
-      onClick={() => {
-        useRecipe(recipe);
-      }}
+      onClick={() => useRecipe(recipe)}
     >
       <Image
         src={recipe.image}
@@ -52,7 +50,7 @@ export const RecipeCard = ({ recipe, useRecipe }) => {
           {recipe.label}
         </Text>
         <Labels labels={healthLabels} bg="purple.100" />
-        <Labels labels={dietLabels} bg="blue.100" />
+        <Labels labels={dietLabels} bg="green.100" />
         <Text>
           Dish: <b>{dishType}</b>
         </Text>

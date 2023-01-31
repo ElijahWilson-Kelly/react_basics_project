@@ -9,7 +9,7 @@ export const RecipePage = ({ recipe, useRecipe, toggleRecipeFavourite }) => {
       <Flex justify={"space-between"}>
         <IconButton
           icon={<ChevronLeftIcon fontSize={20} />}
-          aria-label="Search database"
+          aria-label="Return to homepage"
           p={10}
           bg={"none"}
           onClick={() => useRecipe(null)}
@@ -22,7 +22,7 @@ export const RecipePage = ({ recipe, useRecipe, toggleRecipeFavourite }) => {
             />
           }
           _hover={{ opacity: "0.7" }}
-          aria-label="Search database"
+          aria-label="Favourite recipe"
           p={10}
           bg={"none"}
           onClick={() => toggleRecipeFavourite(recipe)}

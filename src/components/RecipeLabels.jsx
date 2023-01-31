@@ -15,14 +15,25 @@ export const RecipeLabels = ({ recipe }) => {
     (key) => recipe.totalNutrients[key]
   );
 
+  const dietLabelsJSX = (
+    <>
+      <Heading>Diet:</Heading>
+      <Labels labels={recipe.dietLabels} bg={"green.100"} />
+    </>
+  );
+  const cautionLabelsJSX = (
+    <>
+      <Heading>Cautions:</Heading>
+      <Labels labels={recipe.cautions} bg={"red.100"} />
+    </>
+  );
+
   return (
     <Flex direction="column" gap={3}>
       <Heading>Health Labels:</Heading>
       <Labels labels={recipe.healthLabels} bg={"purple.100"} />
-      {recipe.dietLabels.length > 0 && <Heading>Diet:</Heading>}
-      <Labels labels={recipe.dietLabels} bg={"green.100"} />
-      {recipe.cautions.length > 0 && <Heading>Cautions:</Heading>}
-      <Labels labels={recipe.cautions} bg={"red.100"} />
+      {recipe.dietLabels.length > 0 && dietLabelsJSX}
+      {recipe.cautions.length > 0 && cautionLabelsJSX}
       <Heading>Total Nutrients:</Heading>
       <Flex wrap={"wrap"} gap={5}>
         {nutrientLabels.map((nutrient) => {

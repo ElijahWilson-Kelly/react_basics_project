@@ -7,21 +7,13 @@ import { Header } from "../components/Header";
 export const RecipesPage = ({
   recipes,
   useRecipe,
-  favouriteRecipes,
   filterTerm,
   useFilterTerm,
 }) => {
   const [searchTerm, useSearchTerm] = useState("");
 
-  if (filterTerm === "Favourites") {
-    recipes = favouriteRecipes;
-  } else if (filterTerm != "All") {
-    recipes = recipes.filter((item) => {
-      return item.recipe.healthLabels.includes(filterTerm);
-    });
-  }
-  recipes = recipes.filter((item) =>
-    item.recipe.label.toLowerCase().includes(searchTerm.toLowerCase())
+  recipes = recipes.filter((recipe) =>
+    recipe.recipe.label.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -59,8 +51,8 @@ export const RecipesPage = ({
       >
         {recipes.map((recipe) => (
           <RecipeCard
-            recipe={recipe.recipe}
             key={recipe.recipe.label}
+            recipe={recipe.recipe}
             useRecipe={useRecipe}
           />
         ))}
