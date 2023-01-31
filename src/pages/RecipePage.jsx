@@ -16,7 +16,10 @@ export const RecipePage = ({ recipe, useRecipe, toggleRecipeFavourite }) => {
         />
         <IconButton
           icon={
-            <StarIcon fontSize={25} color={recipe.favorited ? "red" : "gray"} />
+            <StarIcon
+              fontSize={25}
+              color={recipe.favourited ? "red" : "gray"}
+            />
           }
           _hover={{ opacity: "0.7" }}
           aria-label="Search database"

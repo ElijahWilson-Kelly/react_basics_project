@@ -1,6 +1,6 @@
 import { useState } from "react";
-
 import { Flex, useToast } from "@chakra-ui/react";
+
 import { data } from "../utils/data";
 import { RecipesPage } from "./RecipesPage";
 import { RecipePage } from "./RecipePage";
@@ -8,15 +8,15 @@ import { RecipePage } from "./RecipePage";
 export const App = () => {
   const [recipe, useRecipe] = useState(null);
   const [favouriteRecipes, useFavouriteRecipes] = useState([]);
+  const [filterTerm, useFilterTerm] = useState("All");
   const toast = useToast();
 
   const toggleRecipeFavourite = (recipeToToggle) => {
     const index = favouriteRecipes.findIndex(
       (recipe) => recipe.recipe.label === recipeToToggle.label
     );
-
     if (index < 0) {
-      recipeToToggle.favorited = true;
+      recipeToToggle.favourited = true;
       toast({
         title: "Item added",
         description: `${recipeToToggle.label} added to favourites`,
@@ -28,8 +28,7 @@ export const App = () => {
         return [...prevRecipies, { recipe: recipeToToggle }];
       });
     } else {
-      recipeToToggle.favorited = false;
-      console.log(recipeToToggle);
+      recipeToToggle.favourited = false;
       toast({
         title: "Item removed",
         description: `${recipeToToggle.label} removed from favourites`,
@@ -59,6 +58,8 @@ export const App = () => {
           recipes={data.hits}
           useRecipe={useRecipe}
           favouriteRecipes={favouriteRecipes}
+          filterTerm={filterTerm}
+          useFilterTerm={useFilterTerm}
         />
       )}
     </Flex>

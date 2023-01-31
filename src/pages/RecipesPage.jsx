@@ -4,9 +4,14 @@ import { useState } from "react";
 import { RecipeCard } from "../components/RecipeCard";
 import { Header } from "../components/Header";
 
-export const RecipesPage = ({ recipes, useRecipe, favouriteRecipes }) => {
+export const RecipesPage = ({
+  recipes,
+  useRecipe,
+  favouriteRecipes,
+  filterTerm,
+  useFilterTerm,
+}) => {
   const [searchTerm, useSearchTerm] = useState("");
-  const [filterTerm, useFilterTerm] = useState("All");
 
   if (filterTerm === "Favourites") {
     recipes = favouriteRecipes;
@@ -36,7 +41,7 @@ export const RecipesPage = ({ recipes, useRecipe, favouriteRecipes }) => {
         searchTerm={searchTerm}
         useSearchTerm={useSearchTerm}
         mt={10}
-        w={"60%"}
+        w={["90%", "80%", "60%"]}
         fontWeight={"bold"}
         color={"gray.200"}
       />
