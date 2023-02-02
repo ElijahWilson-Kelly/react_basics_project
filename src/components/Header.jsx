@@ -1,6 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 
 export const Header = ({ filterTerm, useFilterTerm }) => {
+  // Styling for the selected filter element
   const selectedTabStyles = {
     textDecoration: "underline",
     color: "lightblue",
@@ -21,8 +22,8 @@ export const Header = ({ filterTerm, useFilterTerm }) => {
     >
       <Text
         onClick={() => useFilterTerm("All")}
-        style={filterTerm === "All" ? selectedTabStyles : {}}
         {...filterTabStyles}
+        style={filterTerm === "All" ? selectedTabStyles : {}}
       >
         All
       </Text>
