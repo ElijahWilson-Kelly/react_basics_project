@@ -1,5 +1,11 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
 
+/*
+  Renders infomation about the recipe. Rendered by RecipePage.
+  Props -
+    recipe - {object}
+*/
+
 export const RecipeInformation = ({ recipe }) => {
   return (
     <Flex className="recipe-information" direction={"column"} gap={4}>
@@ -16,7 +22,7 @@ export const RecipeInformation = ({ recipe }) => {
       <Text>
         <b>Ingredients:</b>
       </Text>
-      {recipe.ingredientLines.map((line, index) => {
+      {recipe.ingredientLines.map((line) => {
         return (
           <Text key={line} mb={2} color={"gray.500"}>
             {line}

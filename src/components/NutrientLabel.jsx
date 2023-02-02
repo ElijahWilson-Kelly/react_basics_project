@@ -1,5 +1,11 @@
 import { Flex, Text } from "@chakra-ui/react";
 
+/*
+  Renders a single nutrient name with its amount in a flex box
+  Props -
+    nutrient - {object}
+*/
+
 export const NutrientLabel = ({ nutrient }) => {
   let amount = nutrient.quantity.toFixed();
   if (nutrient.unit === "g" || nutrient.unit === "mg") {

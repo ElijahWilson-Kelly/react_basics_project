@@ -2,6 +2,12 @@ import { Flex, Heading } from "@chakra-ui/react";
 import { Labels } from "./Labels";
 import { NutrientLabel } from "./NutrientLabel";
 
+/*
+  Renders the health labels for a given recipe. Renderd By RecipePage.
+  Props -
+    recipe - {object}
+*/
+
 export const RecipeLabels = ({ recipe }) => {
   const relaventNutrientsKeys = [
     "ENERC_KCAL",

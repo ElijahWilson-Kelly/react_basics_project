@@ -1,33 +1,34 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Flex, useToast } from "@chakra-ui/react";
 
 import { data } from "../utils/data";
 import { RecipesPage } from "./RecipesPage";
 import { RecipePage } from "./RecipePage";
 
+/*
+  Main Component
+  State - 
+    recipe - {object} or {null}
+    filterTerm - {string}
+    favourtieRecipes - {array}
+  
+  Conditionally renders RecipePage or RecipesPage depending on whether recipe has a value
+*/
 export const App = () => {
   const [recipe, useRecipe] = useState(null);
   const [filterTerm, useFilterTerm] = useState("All");
+  const [favouriteRecipes, useFavouriteRecipes] = useState([]);
+  let recipes = data.hits;
   const toast = useToast();
 
-  let recipes = data.hits;
-  // Filter recipes into categories and store using Use Memo
-  const vegetarianRecipes = useMemo(() => {
-    return recipes.filter((recipe) =>
+  if (filterTerm === "Vegetarian") {
+    recipes = recipes.filter((recipe) =>
       recipe.recipe.healthLabels.includes("Vegetarian")
     );
-  }, []);
-  const veganRecipes = useMemo(() => {
-    return recipes.filter((recipe) =>
+  } else if (filterTerm === "Vegan") {
+    recipes = recipes.filter((recipe) =>
       recipe.recipe.healthLabels.includes("Vegan")
     );
-  }, []);
-  const [favouriteRecipes, useFavouriteRecipes] = useState([]);
-
-  if (filterTerm === "Vegetarian") {
-    recipes = vegetarianRecipes;
-  } else if (filterTerm === "Vegan") {
-    recipes = veganRecipes;
   } else if (filterTerm === "Favourites") {
     recipes = favouriteRecipes;
   }

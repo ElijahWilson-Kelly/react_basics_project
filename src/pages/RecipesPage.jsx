@@ -4,6 +4,18 @@ import { useState } from "react";
 import { RecipeCard } from "../components/RecipeCard";
 import { Header } from "../components/Header";
 
+/*
+  Recipes Page for rendering list of recipes
+  Props - 
+    recipes - {array}
+    useRecipe - {function}
+    filterTerm - {string}
+    useFitlerTerm - {function}
+
+  State - 
+    searchTerm - {string}
+*/
+
 export const RecipesPage = ({
   recipes,
   useRecipe,
@@ -12,6 +24,7 @@ export const RecipesPage = ({
 }) => {
   const [searchTerm, useSearchTerm] = useState("");
 
+  // Filter results by search term
   recipes = recipes.filter((recipe) =>
     recipe.recipe.label.toLowerCase().includes(searchTerm.toLowerCase())
   );

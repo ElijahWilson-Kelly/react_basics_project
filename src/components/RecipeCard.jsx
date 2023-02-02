@@ -1,6 +1,15 @@
 import { Box, Image, Flex, Text } from "@chakra-ui/react";
 import { Labels } from "./Labels";
 
+/*
+  Renders a recipe card to be displayed by the Recipes Page
+  Props -
+    recipe - {object}
+    useRecipe - {function}
+
+  ~ Uses conditional rendering to only render a given label heading if the relevant labels are present
+*/
+
 export const RecipeCard = ({ recipe, useRecipe }) => {
   const healthLabels = recipe.healthLabels.filter(
     (label) => label === "Vegetarian" || label === "Vegan"

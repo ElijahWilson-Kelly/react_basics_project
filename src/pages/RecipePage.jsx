@@ -3,6 +3,14 @@ import { RecipeInformation } from "../components/RecipeInfomation";
 import { RecipeLabels } from "../components/RecipeLabels";
 import { ChevronLeftIcon, StarIcon } from "@chakra-ui/icons";
 
+/*
+  Recipe Component for displaying more detailed infomation
+    Props -
+      recipe - {object}
+      useRecipe - {function}
+      toggleRecipeFavourtie - {function}
+*/
+
 export const RecipePage = ({ recipe, useRecipe, toggleRecipeFavourite }) => {
   return (
     <Box bg={"white"} w={["100%", null, "70%"]} mx={"auto"} maxW={800}>
