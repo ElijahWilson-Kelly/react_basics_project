@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Flex, useToast } from "@chakra-ui/react";
 
-import { data } from "../utils/data";
-import { RecipesPage } from "./RecipesPage";
-import { RecipePage } from "./RecipePage";
+import { data } from "./utils/data";
+import { RecipesPage } from "./pages/RecipesPage";
+import { RecipePage } from "./pages/RecipePage";
 
 /*
   Main Component
