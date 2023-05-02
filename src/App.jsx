@@ -18,7 +18,16 @@ export const App = () => {
   const [recipe, useRecipe] = useState(null);
   const [filterTerm, useFilterTerm] = useState("All");
   const [favouriteRecipes, useFavouriteRecipes] = useState([]);
-  let recipes = data.hits;
+  let recipes = data.hits.map((hit) => {
+    const newUrl = hit.recipe.image.slice(4);
+    return {
+      ...hit,
+      recipe: {
+        ...hit.recipe,
+        image: newUrl,
+      },
+    };
+  });
   const toast = useToast();
 
   if (filterTerm === "Vegetarian") {
