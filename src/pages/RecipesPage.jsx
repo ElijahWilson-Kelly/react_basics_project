@@ -40,7 +40,7 @@ export const RecipesPage = ({
         borderBottom={"1px solid white"}
         mt={10}
       >
-        MENU
+        Winc Menu!
       </Heading>
       <SearchBar
         searchTerm={searchTerm}

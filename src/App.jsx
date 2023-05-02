@@ -1,9 +1,20 @@
 import { useState } from "react";
 import { Flex, useToast } from "@chakra-ui/react";
 
-import { data } from "./utils/data";
 import { RecipesPage } from "./pages/RecipesPage";
 import { RecipePage } from "./pages/RecipePage";
+
+import { data } from "./utils/data";
+let recipes = data.hits.map((hit) => {
+  const newUrl = hit.recipe.image.slice(4);
+  return {
+    ...hit,
+    recipe: {
+      ...hit.recipe,
+      image: newUrl,
+    },
+  };
+});
 
 /*
   Main Component
@@ -18,16 +29,6 @@ export const App = () => {
   const [recipe, useRecipe] = useState(null);
   const [filterTerm, useFilterTerm] = useState("All");
   const [favouriteRecipes, useFavouriteRecipes] = useState([]);
-  let recipes = data.hits.map((hit) => {
-    const newUrl = hit.recipe.image.slice(4);
-    return {
-      ...hit,
-      recipe: {
-        ...hit.recipe,
-        image: newUrl,
-      },
-    };
-  });
   const toast = useToast();
 
   if (filterTerm === "Vegetarian") {
