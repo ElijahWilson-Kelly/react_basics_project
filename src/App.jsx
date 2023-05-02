@@ -5,7 +5,7 @@ import { RecipesPage } from "./pages/RecipesPage";
 import { RecipePage } from "./pages/RecipePage";
 
 import { data } from "./utils/data";
-let recipes = data.hits.map((hit) => {
+const formatedData = data.hits.map((hit) => {
   const newUrl = hit.recipe.image.slice(4);
   return {
     ...hit,
@@ -30,6 +30,7 @@ export const App = () => {
   const [filterTerm, useFilterTerm] = useState("All");
   const [favouriteRecipes, useFavouriteRecipes] = useState([]);
   const toast = useToast();
+  let recipes = formatedData;
 
   if (filterTerm === "Vegetarian") {
     recipes = recipes.filter((recipe) =>
