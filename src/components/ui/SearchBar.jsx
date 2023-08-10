@@ -9,23 +9,23 @@ import { Search2Icon } from "@chakra-ui/icons";
     ...styling - {object} ~ styles to be applied to the search bar
 */
 
-export const SearchBar = ({ searchTerm, useSearchTerm, ...styling }) => {
+export const SearchBar = ({ searchTerm, setSearchTerm, ...styling }) => {
   const handleChange = (e) => {
-    useSearchTerm(e.target.value);
+    setSearchTerm(e.target.value);
   };
 
   return (
     <InputGroup {...styling}>
       <InputLeftAddon bg={"white"}>
-        <Search2Icon color={"blue.600"} />
+        <Search2Icon color={"black"} />
       </InputLeftAddon>
       <Input
         placeholder="Search:"
-        color={"white"}
+        color={"black"}
         onChange={handleChange}
         value={searchTerm}
-        fontWeight={"inherit"}
-        bg={"#00000099"}
+        fontWeight={200}
+        bg={"white"}
       ></Input>
     </InputGroup>
   );

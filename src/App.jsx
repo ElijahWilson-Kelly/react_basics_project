@@ -5,6 +5,7 @@ import { RecipesPage } from "./pages/RecipesPage";
 import { RecipePage } from "./pages/RecipePage";
 
 import { data } from "./utils/data";
+import { Header } from "./components/Header";
 const formatedData = data.hits.map((hit) => {
   const newUrl = hit.recipe.image.slice(4);
   return {
@@ -22,13 +23,16 @@ const formatedData = data.hits.map((hit) => {
     recipe - {object} or {null}
     filterTerm - {string}
     favourtieRecipes - {array}
+    searchTerm = {string}
   
   Conditionally renders RecipePage or RecipesPage depending on whether recipe has a value
 */
 export const App = () => {
-  const [recipe, useRecipe] = useState(null);
-  const [filterTerm, useFilterTerm] = useState("All");
-  const [favouriteRecipes, useFavouriteRecipes] = useState([]);
+  const [recipe, setRecipe] = useState(null);
+  const [filterTerm, setFilterTerm] = useState("All");
+  const [favouriteRecipes, setFavouriteRecipes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
   const toast = useToast();
   let recipes = formatedData;
 
@@ -57,7 +61,7 @@ export const App = () => {
         duration: 2000,
         isClosable: true,
       });
-      useFavouriteRecipes((prevRecipies) => {
+      setFavouriteRecipes((prevRecipies) => {
         return [...prevRecipies, { recipe: recipeToToggle }];
       });
     } else {
@@ -69,7 +73,7 @@ export const App = () => {
         duration: 2000,
         isClosable: true,
       });
-      useFavouriteRecipes((prevRecipies) => {
+      setFavouriteRecipes((prevRecipies) => {
         return [
           ...prevRecipies.slice(0, index),
           ...prevRecipies.slice(index + 1),
@@ -79,20 +83,26 @@ export const App = () => {
   };
 
   return (
-    <Flex minHeight="100vh" direction="column" bg="blue.900">
+    <Flex minHeight="100vh" direction="column" bg="white">
+      <Header
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        filterTerm={filterTerm}
+        setFilterTerm={setFilterTerm}
+      />
       {recipe ? (
         <RecipePage
           recipe={recipe}
-          useRecipe={useRecipe}
+          setRecipe={setRecipe}
           toggleRecipeFavourite={toggleRecipeFavourite}
         />
       ) : (
         <RecipesPage
           recipes={recipes}
-          useRecipe={useRecipe}
+          setRecipe={setRecipe}
           favouriteRecipes={favouriteRecipes}
           filterTerm={filterTerm}
-          useFilterTerm={useFilterTerm}
+          searchTerm={searchTerm}
         />
       )}
     </Flex>
