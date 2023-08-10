@@ -22,26 +22,25 @@ export const RecipeCard = ({ recipe, useRecipe }) => {
   return (
     <Box
       w={320}
-      borderRadius="lg"
       borderWidth="1px"
       bg="white"
       boxShadow={"2xl"}
       overflow="hidden"
       mt={10}
-      p={5}
-      transition={"opacity 200ms ease"}
+      pb={10}
+      transition={"transform 200ms ease"}
       _hover={{
         cursor: "pointer",
-        opacity: "0.7",
+        transform: "translate(-3px,-3px)",
       }}
       onClick={() => useRecipe(recipe)}
     >
       <Image
         src={recipe.image}
-        h={160}
+        h={200}
         w={"100%"}
         objectFit="cover"
-        borderBottom={"3px solid black"}
+        borderBottom={"1px solid black"}
       ></Image>
       <Flex
         direction="column"

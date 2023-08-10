@@ -1,0 +1,14 @@
+/* Heading Stripes */
+
+.stripe {
+  width: 100px;
+  height: 2px;
+}
+
+.stripe_left {
+  background: linear-gradient(to right, #ffffff00, #ffffff);
+}
+
+.stripe_right {
+  background: linear-gradient(to left, #ffffff00, #ffffff);
+}

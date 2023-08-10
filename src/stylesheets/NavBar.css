@@ -1,0 +1,22 @@
+.recipe_filter {
+  position: relative;
+}
+
+/* Underline */
+.recipe_filter::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0px;
+  border-bottom: 1px solid black;
+  transition: width 300ms ease;
+}
+
+.recipe_filter:hover {
+  cursor: pointer;
+}
+
+.recipe_filter:hover::after {
+  width: 100%;
+}

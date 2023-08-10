@@ -6,6 +6,7 @@ import { RecipePage } from "./pages/RecipePage";
 
 import { data } from "./utils/data";
 import { Header } from "./components/Header";
+import { NavBar } from "./components/NavBar";
 const formatedData = data.hits.map((hit) => {
   const newUrl = hit.recipe.image.slice(4);
   return {
@@ -84,6 +85,7 @@ export const App = () => {
 
   return (
     <Flex minHeight="100vh" direction="column" bg="white">
+      <NavBar />
       <Header
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}

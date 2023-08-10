@@ -2,6 +2,8 @@ import { Flex, Stack, Text, Heading } from "@chakra-ui/react";
 
 import { SearchBar } from "./ui/SearchBar";
 
+import "../stylesheets/Header.css";
+
 /*
   Header componenet for filter options
     Props - 
@@ -18,28 +20,34 @@ export const Header = ({
 }) => {
   // Styling for the selected filter element
   const selectedTabStyles = {
-    color: "red",
+    color: "lightblue",
   };
   // Styling that applys to all the text elements
   const filterTabStyles = {
-    _hover: { transform: "scale(1.1)", cursor: "pointer", color: "red" },
-    borderBottom: ["2px solid #FFFFFF88", null, "none"],
+    _hover: { transform: "scale(1.1)", cursor: "pointer", color: "lightblue" },
     textDecoration: "none",
     py: 3,
-    display: ["none", null, null, "block"],
+    color: "white",
+    fontWeight: 900,
+    fontSize: "1.2rem",
+    textShadow: "0px 0px 2px black",
+    display: "none",
   };
 
   return (
     <Stack
       color="black"
       w={"100%"}
-      bg={"#f8f5f0"}
-      h="320px"
+      h="600px"
       justify={"center"}
       align={"center"}
-      gap={10}
+      backgroundImage={
+        'linear-gradient(#22000088, #0000FF44), url("/assets/recipe-images/chicken-wings-barbecue-sweetly-sour-sauce-picnic-summer-menu-tasty-food-top-view-flat-lay_2829-6471.avif")'
+      }
+      gap={"60px"}
+      className="main_image"
     >
-      <Flex align={"center"} justify={"center"} gap={"80px"}>
+      <Flex align={"center"} justify={"center"} gap={"10%"}>
         <Text
           onClick={() => setFilterTerm("All")}
           {...filterTabStyles}
@@ -54,14 +62,19 @@ export const Header = ({
         >
           Vegetarian
         </Text>
-        <Heading
-          fontSize={"4rem"}
-          fontWeight={900}
-          color={"white"}
-          textShadow={"0px 0px 2px black"}
-        >
-          WincKitchen
-        </Heading>
+        <Flex align={"center"} gap={5}>
+          <div className="stripe stripe_left"></div>
+          <Heading
+            color={"white"}
+            fontSize={"6.6rem"}
+            fontWeight={200}
+            textShadow={"0px 0px 1px black"}
+          >
+            WINC MENU
+          </Heading>
+          <div className="stripe stripe_right"></div>
+        </Flex>
+
         <Text
           onClick={() => setFilterTerm("Vegan")}
           {...filterTabStyles}

@@ -16,9 +16,6 @@ export const SearchBar = ({ searchTerm, setSearchTerm, ...styling }) => {
 
   return (
     <InputGroup {...styling}>
-      <InputLeftAddon bg={"white"}>
-        <Search2Icon color={"black"} />
-      </InputLeftAddon>
       <Input
         placeholder="Search:"
         color={"black"}
@@ -26,6 +23,8 @@ export const SearchBar = ({ searchTerm, setSearchTerm, ...styling }) => {
         value={searchTerm}
         fontWeight={200}
         bg={"white"}
+        variant="unstyled"
+        p={3}
       ></Input>
     </InputGroup>
   );
