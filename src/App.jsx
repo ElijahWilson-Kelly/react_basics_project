@@ -5,7 +5,6 @@ import { RecipesPage } from "./pages/RecipesPage";
 import { RecipePage } from "./pages/RecipePage";
 
 import { data } from "./utils/data";
-import { Header } from "./components/Header";
 import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
 import { SearchModal } from "./modals/SearchModal";

@@ -1,7 +1,8 @@
 import { Box, Flex, Grid, IconButton, Image } from "@chakra-ui/react";
 import { RecipeInformation } from "../components/RecipeInfomation";
 import { RecipeLabels } from "../components/RecipeLabels";
-import { ChevronLeftIcon, StarIcon } from "@chakra-ui/icons";
+import { ChevronLeftIcon } from "@chakra-ui/icons";
+import { CiHeart } from "react-icons/ci";
 
 /*
   Recipe Component for displaying more detailed infomation
@@ -11,7 +12,7 @@ import { ChevronLeftIcon, StarIcon } from "@chakra-ui/icons";
       toggleRecipeFavourtie - {function}
 */
 
-export const RecipePage = ({ recipe, useRecipe, toggleRecipeFavourite }) => {
+export const RecipePage = ({ recipe, setRecipe, toggleRecipeFavourite }) => {
   return (
     <Box bg={"white"} w={["100%", null, "70%"]} mx={"auto"} maxW={800}>
       <Flex justify={"space-between"}>
@@ -20,14 +21,11 @@ export const RecipePage = ({ recipe, useRecipe, toggleRecipeFavourite }) => {
           aria-label="Return to homepage"
           p={10}
           bg={"none"}
-          onClick={() => useRecipe(null)}
+          onClick={() => setRecipe(null)}
         />
         <IconButton
           icon={
-            <StarIcon
-              fontSize={25}
-              color={recipe.favourited ? "red" : "gray"}
-            />
+            <CiHeart fontSize={25} color={recipe.favourited ? "red" : "gray"} />
           }
           _hover={{ opacity: "0.7" }}
           aria-label="Favourite recipe"
