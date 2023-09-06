@@ -13,10 +13,31 @@
   transition: width 300ms ease;
 }
 
-.recipe_filter:hover {
+.hover_cursor:hover {
   cursor: pointer;
 }
 
 .recipe_filter:hover::after {
   width: 100%;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.hover-blue:hover {
+  color: blue;
+}
+
+.hover-red:hover {
+  color: red;
+}
+
+.hover-grey:hover {
+  color: grey;
 }

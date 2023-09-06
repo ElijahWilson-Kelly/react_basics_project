@@ -1,7 +1,7 @@
 /* Heading Stripes */
 
 .stripe {
-  width: 100px;
+  width: 60px;
   height: 2px;
 }
 
@@ -11,4 +11,10 @@
 
 .stripe_right {
   background: linear-gradient(to left, #ffffff00, #ffffff);
+}
+
+@media screen and (min-width: 600px) {
+  .stripe {
+    width: 100px;
+  }
 }

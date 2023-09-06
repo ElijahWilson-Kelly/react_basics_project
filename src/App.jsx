@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Flex, useToast } from "@chakra-ui/react";
+import { Flex, useDisclosure, useToast } from "@chakra-ui/react";
 
 import { RecipesPage } from "./pages/RecipesPage";
 import { RecipePage } from "./pages/RecipePage";
@@ -7,6 +7,9 @@ import { RecipePage } from "./pages/RecipePage";
 import { data } from "./utils/data";
 import { Header } from "./components/Header";
 import { NavBar } from "./components/NavBar";
+import { Footer } from "./components/Footer";
+import { SearchModal } from "./modals/SearchModal";
+
 const formatedData = data.hits.map((hit) => {
   const newUrl = hit.recipe.image.slice(4);
   return {
@@ -30,9 +33,15 @@ const formatedData = data.hits.map((hit) => {
 */
 export const App = () => {
   const [recipe, setRecipe] = useState(null);
-  const [filterTerm, setFilterTerm] = useState("All");
+  const [filterTerm, setFilterTerm] = useState("");
   const [favouriteRecipes, setFavouriteRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+
+  const {
+    isOpen: isOpenSearchModal,
+    onOpen: onOpenSearchModal,
+    onClose: onCloseSearchModal,
+  } = useDisclosure();
 
   const toast = useToast();
   let recipes = formatedData;
@@ -45,7 +54,7 @@ export const App = () => {
     recipes = recipes.filter((recipe) =>
       recipe.recipe.healthLabels.includes("Vegan")
     );
-  } else if (filterTerm === "Favourites") {
+  } else if (filterTerm === "Favourite") {
     recipes = favouriteRecipes;
   }
 
@@ -83,15 +92,30 @@ export const App = () => {
     }
   };
 
+  const handleFilterchange = (term) => {
+    setRecipe(null);
+    setFilterTerm(term);
+  };
+
+  const handleSearchChange = (term) => {
+    setRecipe(null);
+    setSearchTerm(term);
+  };
+
   return (
     <Flex minHeight="100vh" direction="column" bg="white">
-      <NavBar />
-      <Header
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        filterTerm={filterTerm}
-        setFilterTerm={setFilterTerm}
+      <SearchModal
+        isOpen={isOpenSearchModal}
+        onClose={onCloseSearchModal}
+        setSearchTerm={handleSearchChange}
       />
+
+      <NavBar
+        filterTerm={filterTerm}
+        setFilterTerm={handleFilterchange}
+        openSearchModal={onOpenSearchModal}
+      />
+
       {recipe ? (
         <RecipePage
           recipe={recipe}
@@ -105,8 +129,10 @@ export const App = () => {
           favouriteRecipes={favouriteRecipes}
           filterTerm={filterTerm}
           searchTerm={searchTerm}
+          setSearchTerm={handleSearchChange}
         />
       )}
+      <Footer />
     </Flex>
   );
 };

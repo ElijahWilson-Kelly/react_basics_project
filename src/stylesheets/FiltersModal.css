@@ -1,0 +1,37 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: background-color 300ms ease-in;
+}
+
+.filters-container {
+  position: absolute;
+  transform: translateX(-100%);
+  background-color: rgb(255, 255, 255);
+  transition: transform 300ms ease-in;
+  pointer-events: all;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  padding: 15px;
+  border-bottom-right-radius: 10px;
+}
+
+.filter-terms {
+  padding: 10px 0;
+}
+
+.filter-terms:hover {
+  cursor: pointer;
+}
+
+.filter-terms:hover::after {
+  content: " <--";
+  color: "grey";
+}

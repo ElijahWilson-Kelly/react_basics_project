@@ -10,7 +10,7 @@ import { Labels } from "./Labels";
   ~ Uses conditional rendering to only render a given label heading if the relevant labels are present
 */
 
-export const RecipeCard = ({ recipe, useRecipe }) => {
+export const RecipeCard = ({ recipe, setRecipe }) => {
   const healthLabels = recipe.healthLabels.filter(
     (label) => label === "Vegetarian" || label === "Vegan"
   );
@@ -22,18 +22,16 @@ export const RecipeCard = ({ recipe, useRecipe }) => {
   return (
     <Box
       w={320}
-      borderWidth="1px"
       bg="white"
-      boxShadow={"2xl"}
       overflow="hidden"
+      boxShadow={"0px 0px 1px black"}
       mt={10}
-      pb={10}
+      pb={5}
       transition={"transform 200ms ease"}
       _hover={{
         cursor: "pointer",
-        transform: "translate(-3px,-3px)",
       }}
-      onClick={() => useRecipe(recipe)}
+      onClick={() => setRecipe(recipe)}
     >
       <Image
         src={recipe.image}
@@ -47,7 +45,8 @@ export const RecipeCard = ({ recipe, useRecipe }) => {
         align={"center"}
         mt={4}
         textAlign="center"
-        gap={3}
+        gap={2}
+        px={2}
         color={"gray.700"}
         fontSize={"xs"}
       >
